@@ -1,0 +1,33 @@
+{
+  "name": "LeagueRule",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "description": "Rule content in markdown format"
+    },
+    "order": {
+      "type": "number",
+      "description": "Display order"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "general",
+        "gameplay",
+        "conduct",
+        "eligibility",
+        "scoring",
+        "other"
+      ],
+      "default": "general"
+    }
+  },
+  "required": [
+    "title",
+    "content"
+  ]
+}

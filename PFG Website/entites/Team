@@ -1,0 +1,54 @@
+{
+  "name": "Team",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Team name"
+    },
+    "division": {
+      "type": "number",
+      "description": "Division number"
+    },
+    "rank": {
+      "type": "number",
+      "description": "Overall rank"
+    },
+    "seed": {
+      "type": "number",
+      "description": "Seed number"
+    },
+    "wins": {
+      "type": "number",
+      "default": 0
+    },
+    "losses": {
+      "type": "number",
+      "default": 0
+    },
+    "point_differential": {
+      "type": "number",
+      "default": 0
+    },
+    "points": {
+      "type": "number",
+      "default": 0
+    },
+    "logo_url": {
+      "type": "string",
+      "description": "Team logo URL"
+    },
+    "series": {
+      "type": "string",
+      "enum": [
+        "season",
+        "series_1",
+        "series_2"
+      ],
+      "default": "season"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

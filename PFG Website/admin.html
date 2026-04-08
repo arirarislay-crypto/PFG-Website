@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PFG | Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="admin">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">PFG</span>
+          <span class="brand-copy">Pro Football Gridiron</span>
+        </a>
+        <nav class="site-nav">
+          <a data-nav="home" href="index.html">Home</a>
+          <a data-nav="schedule" href="schedule.html">Schedule</a>
+          <a data-nav="standings" href="standings.html">Standings</a>
+          <a data-nav="stats" href="stats.html">Stats</a>
+          <a data-nav="rulebook" href="rulebook.html">Rulebook</a>
+          <a data-nav="admin" href="admin.html">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="inner-page">
+      <section class="page-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">Admin</span>
+            <h1>League Control Panel</h1>
+            <p>Manage teams, player stats, schedules, and rules from one place.</p>
+          </div>
+
+          <div id="login-panel" class="auth-card">
+            <h2>Admin Login</h2>
+            <p>Only the accounts below can sign in to edit the site.</p>
+            <form id="login-form" class="stack-form" novalidate>
+              <label>
+                <span>Username</span>
+                <input id="admin-username" type="text" autocomplete="username" required />
+              </label>
+              <label>
+                <span>Password</span>
+                <input id="admin-password" type="password" autocomplete="current-password" required />
+              </label>
+              <button class="button primary" type="submit">Log In</button>
+            </form>
+            <p id="login-error" class="error-text hidden">Incorrect username or password.</p>
+          </div>
+
+          <div id="admin-panel" class="admin-shell hidden">
+            <div class="admin-header">
+              <p id="admin-session-copy">Signed in.</p>
+              <button id="logout-button" class="button secondary" type="button">Log Out</button>
+            </div>
+
+            <div class="admin-grid admin-grid-wide">
+              <section class="editor-card">
+                <h2>Teams</h2>
+                <div class="admin-actions">
+                  <button id="auto-add-nfl-teams" class="button secondary" type="button">Auto Add All 32 NFL Teams</button>
+                  <button id="auto-sort-standings" class="button secondary" type="button">Auto Sort Standings</button>
+                </div>
+                <form id="team-form" class="stack-form">
+                  <label><span>Team Name</span><input name="name" type="text" required /></label>
+                  <label><span>Division</span><input name="division" type="number" min="1" required /></label>
+                  <label><span>Rank</span><input name="rank" type="number" min="1" required /></label>
+                  <label><span>Seed</span><input name="seed" type="number" min="1" required /></label>
+                  <label><span>Wins</span><input name="wins" type="number" min="0" required /></label>
+                  <label><span>Losses</span><input name="losses" type="number" min="0" required /></label>
+                  <label><span>Point Differential</span><input name="pointDifferential" type="number" required /></label>
+                  <label><span>Points</span><input name="points" type="number" min="0" required /></label>
+                  <button class="button primary" type="submit">Add Team</button>
+                </form>
+
+                <div class="table-card admin-table-card">
+                  <div class="table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Team</th>
+                          <th class="center">Division</th>
+                          <th class="center">Rank</th>
+                          <th class="center">Seed</th>
+                          <th class="center">Wins</th>
+                          <th class="center">Losses</th>
+                          <th class="center">PD</th>
+                          <th class="center">Points</th>
+                          <th class="center">Save</th>
+                          <th class="center">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody id="team-table-body"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+
+              <section class="editor-card">
+                <h2>Player Stats</h2>
+                <div class="admin-actions">
+                  <button id="auto-rank-stats" class="button secondary" type="button">Auto Rank Player Stats</button>
+                </div>
+                <form id="player-form" class="stack-form">
+                  <label><span>Username</span><input name="username" type="text" required /></label>
+                  <label>
+                    <span>Position</span>
+                    <select id="player-position" name="position">
+                      <option value="QB">QB</option>
+                      <option value="RB">RB</option>
+                      <option value="WR">WR</option>
+                      <option value="DB">DB</option>
+                      <option value="DEF">DEF</option>
+                    </select>
+                  </label>
+                  <label><span>Division</span><input name="division" type="number" min="1" required /></label>
+                  <div id="player-field-grid" class="stack-form"></div>
+                  <button class="button primary" type="submit">Add Stat Entry</button>
+                </form>
+                <div id="player-list" class="admin-list"></div>
+              </section>
+
+              <section class="editor-card">
+                <h2>Schedule</h2>
+                <div class="toolbar" id="schedule-week-tabs"></div>
+                <form id="schedule-form" class="stack-form">
+                  <input id="schedule-week" name="week" type="hidden" value="week_1" />
+                  <label><span>Display Order</span><input name="order" type="number" min="1" value="1" required /></label>
+                  <label><span>Away Team</span><input name="awayTeam" type="text" required /></label>
+                  <label><span>Home Team</span><input name="homeTeam" type="text" required /></label>
+                  <label><span>Result</span><input name="result" type="text" placeholder="Example: Bills 24-21 Jets" /></label>
+                  <label><span>Note</span><input name="note" type="text" placeholder="Example: Final or OT" /></label>
+                  <button class="button primary" type="submit">Add Matchup</button>
+                </form>
+                <div id="schedule-list" class="admin-list"></div>
+              </section>
+
+              <section class="editor-card">
+                <h2>Rulebook</h2>
+                <form id="rule-form" class="stack-form">
+                  <label><span>Title</span><input name="title" type="text" required /></label>
+                  <label><span>Order</span><input name="order" type="number" min="1" required /></label>
+                  <label><span>Content</span><textarea name="content" rows="6" required></textarea></label>
+                  <button class="button primary" type="submit">Add Rule</button>
+                </form>
+                <div id="rule-list" class="admin-list"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <span>PFG Website</span>
+        <span>Admin</span>
+      </div>
+    </footer>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

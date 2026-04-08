@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PFG | Stats</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="stats">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">PFG</span>
+          <span class="brand-copy">Pro Football Gridiron</span>
+        </a>
+        <nav class="site-nav">
+          <a data-nav="home" href="index.html">Home</a>
+          <a data-nav="schedule" href="schedule.html">Schedule</a>
+          <a data-nav="standings" href="standings.html">Standings</a>
+          <a data-nav="stats" href="stats.html">Stats</a>
+          <a data-nav="rulebook" href="rulebook.html">Rulebook</a>
+          <a data-nav="admin" href="admin.html">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="inner-page">
+      <section class="page-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="section-tag">Stats</span>
+            <h1>Player leaderboards</h1>
+          </div>
+
+          <div class="toolbar" id="stats-position-tabs"></div>
+
+          <div class="table-card">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr id="stats-head"></tr>
+                </thead>
+                <tbody id="stats-body"></tbody>
+              </table>
+            </div>
+            <div id="stats-empty" class="empty-state hidden">
+              No player stats have been added yet.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <span>PFG Website</span>
+        <span>Stats</span>
+      </div>
+    </footer>
+
+    <script src="site.js"></script>
+  </body>
+</html>

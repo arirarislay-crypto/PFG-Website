@@ -1,0 +1,83 @@
+{
+  "name": "Player",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string",
+      "enum": [
+        "QB",
+        "RB",
+        "WR",
+        "DB",
+        "DEF",
+        "Legacy"
+      ]
+    },
+    "division": {
+      "type": "number"
+    },
+    "rank": {
+      "type": "number"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "comp_pct": {
+      "type": "number"
+    },
+    "completions": {
+      "type": "number"
+    },
+    "attempts": {
+      "type": "number"
+    },
+    "yards": {
+      "type": "number"
+    },
+    "ypa": {
+      "type": "number"
+    },
+    "touchdowns": {
+      "type": "number"
+    },
+    "interceptions": {
+      "type": "number"
+    },
+    "sacks": {
+      "type": "number"
+    },
+    "games_played": {
+      "type": "number"
+    },
+    "receptions": {
+      "type": "number"
+    },
+    "targets": {
+      "type": "number"
+    },
+    "tackles": {
+      "type": "number"
+    },
+    "forced_fumbles": {
+      "type": "number"
+    },
+    "stat_type": {
+      "type": "string",
+      "enum": [
+        "season",
+        "all_time"
+      ],
+      "default": "season"
+    },
+    "team_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "username",
+    "position"
+  ]
+}
